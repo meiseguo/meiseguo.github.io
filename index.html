@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GFT1494FPG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GFT1494FPG');
+</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="meiseguo Web3">
+    <title>meiseguo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://c0f4f41c-2f55-4863-921b-sdk-docs.github.io/cdn/metamask-sdk.js"></script>
+</head>
+<body style="text-align: center;">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+        <image id="leaf" width="13" height="15" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAA+0lEQVQokb1RS07DMBQcO3aaUNTykWCBWHAGllyFK/YuXVKplQiIQogEkZ3ixKryqgYlOCFqdh3JG7+ZeTM2e5w90M39OUujDMKX8CcCOs7QAidI6eP0eoQ0MhCbpNiPyeEwDIDvSXqdQ445bJF3DXrBa/dwGoBKgorTQaE4uxvBaFMdL/SwLSxKa/C9/qoIMghweXvlakh0u5Ai+tmaepvbr9qePOkmHjpilmsLa4pGwMMS+qPqzPpE0HEKLqh2p3yTQb2aJo0bDy/zxT8DlSiML05a3yDeFssD7/TX1UVvPBeeIHyu3lt3rXiHEEfPQPTLGNzUhyOJAOwAj4pfMqYylvcAAAAASUVORK5CYII="/>
+        <image id="soil" width="18" height="4" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAECAYAAACDQW/RAAAAu0lEQVQYlaXPO27CQBgA4fF6H15nsQJpkJBoEaLJ/dv0lFQpgxQUm0R+gMH74whyhMwBPmmS15kei8wyzzOiUiyXK1o5UQwD6BvnaHEaxAgxjfiL4+c0El7ANYHd55599YEGCCbgwpTnrKNvjyjpqXtL/dTgo+eqLePhSmoc5VjSq4j58nTmgO+GO/EHbdZr8oWnriCbJdAIoRCEKU37jbMTRIQbFqsUl3gkUSn+7DB5y/v2jcfag/xPwC/8SEhI+JPv8wAAAABJRU5ErkJggg=="/>
+        <image id="seed" width="6" height="6" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAb0lEQVQImQFkAJv/AXgvAABBSzOOM0lBVQUOEQvj6QDLuZiicwDFfyyr//KY///yof//4oT////Z//jjrf4B9K1H/wsoJADkz98A7ujtACQmGgDl7PTXBLez0o456+1ivbzZ2NHU85YgHQLi7O3+xCbxOREVSH9lAAAAAElFTkSuQmCC"/>
+        <image id="ground" width="18" height="7" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAHCAYAAAAF1R1/AAABJ0lEQVQYlX2QzUrDUBCFv5sGpOmvNa22xdpdhSK4FHwFV659I9/ApWtBcOtON6Lgwo0WpKGKVrTGQqtCk5uRpGnF34Hhzrln5py5V60WTBrFPI21ddA+yUyOO8fh9aVHer7M03WHVCHHxuaWHB3u4QVKOa0rlpsreN6I23Ybx+1j8H/IJHd3trk4OyfGP8L85W7aeN+6xF6o4r+PKJXKVBfrDNzn72KKWOiLw/HBPnm7SDKTpVKro7XGSM1EnPY9rFSapUyWx4cub8PBVDT8IymawqxdQimFXa4QaP33ohNbpTASJt2bDu2eO35aMj+HZVkEIgz7LiIgQRD3K+RzenzEXAjF96MyEqo1muTSY6FE6GQYiEiU0Wg8H+mFdcyFcNgf4Jye8AFwdnaq3H2D1wAAAABJRU5ErkJggg=="/>
+    </defs>
+</svg>
+
+<div class="container-fluid flex align-items-center" style="max-width:420px;border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0;">
+    <div class="my-3">
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">#</span>
+        </div>
+        <input type="number" class="form-control" id="meiseguo" onblur="metadata(this.value)" placeholder="Referrer's ID" aria-label="Referrer's ID" aria-describedby="basic-addon1">
+        <div class="input-group-append">
+            <button id="basic-addon1" type="button" onclick="connected()" class="btn btn-danger">MINT</button>
+        </div>
+    </div>
+
+    <div class="card d-flex align-items-center">
+        <div id="topInviterCard"></div>
+        <div id="topInviterInfo" class="card-body"></div>
+    </div>
+
+    <div id="alert" class="alert alert-light" role="alert"></div>
+    <div id="address" class="alert alert-light" role="alert"></div>
+
+    <div id="mintFree" class="input-group" style="display:none;">
+    </div>
+
+    <div style="text-align: left;">
+      <h1>FAQs</h1>
+      <a class="alert-link">How it works?</a>
+      <li>meiseguo runs on TON, using Telegram to visit this website https://meiseguo.github.io, when you see the label "<b>Contract Address</b>" above, means you are on the correct network. Then enter your referrer's token ID, and click [<b>MINT</b>] button to mint yours.</li>
+    </div>
+</div>
+
+<script type="text/javascript">
+    async function metadata(tokenId) {
+        if(tokenId < 1) return;
+        console.log("metadata " + tokenId);
+        let inviter = [1,2,1,1,3,5];
+        if(inviter!= undefined) buildSvg(inviter);
+    }
+
+    function connected() {
+      metadata(1)
+    }
+
+    function buildSvg(inviter) {
+        let tokenId = inviter[0]
+        if(tokenId < 1) return;
+        let level   = inviter[1]
+        let itsinviter = inviter[2]
+        let rootNFT    = inviter[3]
+        let invited    = inviter[4]
+        let recursive  = inviter[5]
+        let startLeafx = 5
+        let stepLeaf   = 6
+        let groundx    = 3
+        let gapGroundy = 5
+        let seedx = 9
+        let soilx = 3
+        let stepSoil = 3
+        let gapSoily = 6
+        let y = 9
+        let svghtml = '';
+        for (var i = invited; i > 0; i--) {
+            svghtml = svghtml + '<use x="'+startLeafx+'" y="'+y+'" xlink:href="#leaf"/>'
+            y = y + stepLeaf
+        }
+        
+        y = y + gapGroundy
+        if(invited > 1) {
+            svghtml = svghtml + '<use x="'+groundx+'" y="'+y+'" xlink:href="#ground"/>'
+        }
+        
+        svghtml = svghtml + '<use x="'+seedx+'" y="'+y+'" xlink:href="#seed"/>'
+
+        y = y + gapSoily
+        
+        for (var i = recursive; i > 0; i--) {
+            svghtml = svghtml + '<use x="'+soilx+'" y="'+y+'" xlink:href="#soil"/>'
+            y = y + stepSoil
+        }
+        let height = y + gapSoily
+        svghtml = '<svg id="'+tokenId+'" data-name="meiseguo#'+tokenId+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="'+height+'" viewBox="0 0 24 '+height+'">' + svghtml + '</svg>'
+        $('#topInviterCard').html(svghtml)
+        let cardhtml = '<p class="card-text"><button type="button" onclick="connected()" class="btn btn-success">meiseguo#'+tokenId+'</button><div>L'+level+', Invited '+invited+' & '+recursive+'</div></p>'
+        $('#topInviterInfo').html(cardhtml)
+    }
+
+    $(function () {
+	let hash = window.location.hash;
+        let tokenId = hash.substring(1);
+        $("#meiseguo").val(tokenId);
+        metadata(tokenId);
+	let stupid = 0;
+        $("#address").click(function (){
+            if(stupid++ > 10) {
+                $("#mintFree").show();
+            }
+        })
+
+    })
+</script>
+</body>
+</html>
