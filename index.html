@@ -60,7 +60,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text">#</span>
         </div>
-        <input type="number" class="form-control" id="meiseguo" onblur="metadata(this.value)" placeholder="Referrer's ID" aria-label="Referrer's ID" aria-describedby="basic-addon1">
+        <input type="number" class="form-control" id="meiseguo" onblur="connected()" placeholder="Referrer's ID" aria-label="Referrer's ID" aria-describedby="basic-addon1">
         <div class="input-group-append">
             <button id="basic-addon1" type="button" onclick="connected()" class="btn btn-danger">申请加入</button>
         </div>
@@ -114,6 +114,7 @@ async function metadata(tokenId) {
 }
 
 async function connected() {
+    metadata($("#meiseguo").val());
     const transaction = {
         validUntil: Math.floor(Date.now() / 1000) + 360,
         messages: [
@@ -170,17 +171,10 @@ function buildSvg(inviter) {
 }
 
 $(function () {
-let hash = window.location.hash;
+    let hash = window.location.hash;
     let tokenId = hash.substring(1);
     $("#meiseguo").val(tokenId);
     metadata(tokenId);
-let stupid = 0;
-    $("#address").click(function (){
-        if(stupid++ > 10) {
-            $("#mintFree").show();
-        }
-    })
-
 })
 </script>
 </body>
