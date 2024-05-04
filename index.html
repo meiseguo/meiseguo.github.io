@@ -115,10 +115,6 @@ async function metadata(tokenId) {
 }
 
 async function connected() {
-    const body = beginCell()
-      .storeUint(0, 32)
-      .storeStringTail("A gift from @meiseguo")
-      .endCell();
     const transaction = {
         validUntil: Math.floor(Date.now() / 1000) + 360,
         messages: [
