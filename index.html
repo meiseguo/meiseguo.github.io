@@ -69,88 +69,88 @@
     </div>
 </div>
 <script type="text/javascript">
-    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
-        buttonRootId: 'ton-connect'
-    });
+const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
+    buttonRootId: 'ton-connect'
+});
 
-    async function metadata(tokenId) {
-        if(tokenId < 1) return;
-        console.log("metadata " + tokenId);
-        let inviter = [1,2,1,1,3,5];
-        if(inviter!= undefined) buildSvg(inviter);
-    }
+async function metadata(tokenId) {
+    if(tokenId < 1) return;
+    console.log("metadata " + tokenId);
+    let inviter = [1,2,1,1,3,5];
+    if(inviter!= undefined) buildSvg(inviter);
+}
 
-    async function connected() {
-        const transaction = {
-            validUntil: Math.floor(Date.now() / 1000) + 360,
-            messages: [
-                {
-                    address: '0:fbe5c307440884908591d0a38f5560ecb872c597076b4aaca653c37362cfbc9e',
-                    amount: toNano("0.05"),
-                    payload: 'A gift from @meiseguo'.toBoc().toString("base64") // payload with comment in body
-                }
-            ]
-        }
-        const result = await tonConnectUI.sendTransaction(transaction);
-    }
-
-    function buildSvg(inviter) {
-        let tokenId = inviter[0]
-        if(tokenId < 1) return;
-        let level   = inviter[1]
-        let itsinviter = inviter[2]
-        let rootNFT    = inviter[3]
-        let invited    = inviter[4]
-        let recursive  = inviter[5]
-        let startLeafx = 5
-        let stepLeaf   = 6
-        let groundx    = 3
-        let gapGroundy = 5
-        let seedx = 9
-        let soilx = 3
-        let stepSoil = 3
-        let gapSoily = 6
-        let y = 9
-        let svghtml = '';
-        for (var i = invited; i > 0; i--) {
-            svghtml = svghtml + '<use x="'+startLeafx+'" y="'+y+'" xlink:href="#leaf"/>'
-            y = y + stepLeaf
-        }
-        
-        y = y + gapGroundy
-        if(invited > 1) {
-            svghtml = svghtml + '<use x="'+groundx+'" y="'+y+'" xlink:href="#ground"/>'
-        }
-        
-        svghtml = svghtml + '<use x="'+seedx+'" y="'+y+'" xlink:href="#seed"/>'
-
-        y = y + gapSoily
-        
-        for (var i = recursive; i > 0; i--) {
-            svghtml = svghtml + '<use x="'+soilx+'" y="'+y+'" xlink:href="#soil"/>'
-            y = y + stepSoil
-        }
-        let height = y + gapSoily
-        svghtml = '<svg id="'+tokenId+'" data-name="美色国#'+tokenId+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="'+height+'" viewBox="0 0 24 '+height+'">' + svghtml + '</svg>'
-        $('#topInviterCard').html(svghtml)
-        let cardhtml = '<p class="card-text"><button type="button" onclick="connected()" class="btn btn-success">美色国#'+tokenId+'</button><div>L'+level+', Invited '+invited+' & '+recursive+'</div></p>'
-        $('#topInviterInfo').html(cardhtml)
-    }
-
-    $(function () {
-	let hash = window.location.hash;
-        let tokenId = hash.substring(1);
-        $("#meiseguo").val(tokenId);
-        metadata(tokenId);
-	let stupid = 0;
-        $("#address").click(function (){
-            if(stupid++ > 10) {
-                $("#mintFree").show();
+async function connected() {
+    const transaction = {
+        validUntil: Math.floor(Date.now() / 1000) + 360,
+        messages: [
+            {
+                address: '0:fbe5c307440884908591d0a38f5560ecb872c597076b4aaca653c37362cfbc9e',
+                amount: 50000000,
+                payload: 'A gift from @meiseguo'.toBoc().toString("base64") // payload with comment in body
             }
-        })
+        ]
+    }
+    const result = await tonConnectUI.sendTransaction(transaction);
+}
 
+function buildSvg(inviter) {
+    let tokenId = inviter[0]
+    if(tokenId < 1) return;
+    let level   = inviter[1]
+    let itsinviter = inviter[2]
+    let rootNFT    = inviter[3]
+    let invited    = inviter[4]
+    let recursive  = inviter[5]
+    let startLeafx = 5
+    let stepLeaf   = 6
+    let groundx    = 3
+    let gapGroundy = 5
+    let seedx = 9
+    let soilx = 3
+    let stepSoil = 3
+    let gapSoily = 6
+    let y = 9
+    let svghtml = '';
+    for (var i = invited; i > 0; i--) {
+        svghtml = svghtml + '<use x="'+startLeafx+'" y="'+y+'" xlink:href="#leaf"/>'
+        y = y + stepLeaf
+    }
+
+    y = y + gapGroundy
+    if(invited > 1) {
+        svghtml = svghtml + '<use x="'+groundx+'" y="'+y+'" xlink:href="#ground"/>'
+    }
+
+    svghtml = svghtml + '<use x="'+seedx+'" y="'+y+'" xlink:href="#seed"/>'
+
+    y = y + gapSoily
+
+    for (var i = recursive; i > 0; i--) {
+        svghtml = svghtml + '<use x="'+soilx+'" y="'+y+'" xlink:href="#soil"/>'
+        y = y + stepSoil
+    }
+    let height = y + gapSoily
+    svghtml = '<svg id="'+tokenId+'" data-name="美色国#'+tokenId+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="'+height+'" viewBox="0 0 24 '+height+'">' + svghtml + '</svg>'
+    $('#topInviterCard').html(svghtml)
+    let cardhtml = '<p class="card-text"><button type="button" onclick="connected()" class="btn btn-success">美色国#'+tokenId+'</button><div>L'+level+', Invited '+invited+' & '+recursive+'</div></p>'
+    $('#topInviterInfo').html(cardhtml)
+}
+
+$(function () {
+let hash = window.location.hash;
+    let tokenId = hash.substring(1);
+    $("#meiseguo").val(tokenId);
+    metadata(tokenId);
+let stupid = 0;
+    $("#address").click(function (){
+        if(stupid++ > 10) {
+            $("#mintFree").show();
+        }
     })
+
+})
 </script>
 </body>
 </html>
