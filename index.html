@@ -86,7 +86,7 @@
 
     tonConnectUI.onStatusChange(wallet => {
         if (wallet && wallet.connectItems?.tonProof && 'proof' in wallet.connectItems.tonProof) {
-            Telegram.WebApp.showAlert(JSON.stringify(wallet.connectItems.tonProof.proof))
+            // Telegram.WebApp.showAlert(JSON.stringify(wallet.connectItems.tonProof.proof))
         }
     });
 
@@ -168,13 +168,6 @@ function buildSvg(inviter) {
     let cardhtml = '<p class="card-text"><button type="button" onclick="connected()" class="btn btn-success">美色国#'+tokenId+'</button><div>Lv'+level+', Invited '+invited+' & '+recursive+'</div></p>'
     $('#topInviterInfo').html(cardhtml)
 }
-
-$(function () {
-    let hash = window.location.hash;
-    let tokenId = hash.substring(1);
-    $("#meiseguo").val(tokenId);
-    metadata(tokenId);
-})
 </script>
 </body>
 </html>
