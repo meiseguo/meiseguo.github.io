@@ -67,11 +67,11 @@
     </div>
     <div style="text-align: left;">
       <a class="alert-link">How it works?</a>
-        <li>美色国NFT有2个等级：Lv0和Lv1</li>
+        <li>美色国NFT有2个等级：Lv1和Lv2</li>
         <li>每个NFT必须有邀请者ID才能铸造</li>
-        <li>Lv0邀请2个NFT升级为Lv1，成为新团队的负责人</li>
-        <li>Lv0邀请一个奖励50%，被邀请人加入自己所属团队，团队负责人获得25%</li>
-        <li>Lv1邀请一个奖励75%，被邀请人加入自己的团队</li>
+        <li>Lv1邀请2个NFT升级为Lv2，成为新团队的负责人</li>
+        <li>Lv1邀请一个奖励50%，被邀请人加入自己所属团队，团队负责人获得25%</li>
+        <li>Lv2邀请一个奖励75%，被邀请人加入自己的团队</li>
     </div>
 </div>
 <script type="text/javascript">
@@ -164,7 +164,7 @@ function buildSvg(inviter) {
     let height = y + gapSoily
     svghtml = '<svg id="'+tokenId+'" data-name="美色国#'+tokenId+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="'+height+'" viewBox="0 0 24 '+height+'">' + svghtml + '</svg>'
     $('#topInviterCard').html(svghtml)
-    let cardhtml = '<p class="card-text"><button type="button" onclick="connected()" class="btn btn-success">美色国#'+tokenId+'</button><div>L'+level+', Invited '+invited+' & '+recursive+'</div></p>'
+    let cardhtml = '<p class="card-text"><button type="button" onclick="connected()" class="btn btn-success">美色国#'+tokenId+'</button><div>Lv'+level+', Invited '+invited+' & '+recursive+'</div></p>'
     $('#topInviterInfo').html(cardhtml)
 }
 
