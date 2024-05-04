@@ -47,7 +47,7 @@
 <div id="root" class="container-fluid flex align-items-center" style="max-width:420px;border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0;">
     <div class="app my-2">
         <header>
-            <div class="dapp-title"><span class="dapp-title__text"><a href="https://t.me/meiseguo">@meiseguo</a></span></div>
+            <div class="dapp-title"><span class="dapp-title__text">ID:<a id="userid"></a></span></div>
             <div id="ton-connect" ></div>
         </header>
     </div>
@@ -80,6 +80,7 @@
 <script type="text/javascript">
     // Init TWA
     Telegram.WebApp.ready();
+    $("#userid").val(Telegram.WebApp.initDataUnsafe.user.id);
 
     const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
