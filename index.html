@@ -34,7 +34,7 @@
         }
     </style>
 </head>
-<body style="text-align: center;box-sizing: border-box;">
+<body style="text-align: center;box-sizing: border-box;height:100%;">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
         <image id="leaf" width="13" height="15" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAA+0lEQVQokb1RS07DMBQcO3aaUNTykWCBWHAGllyFK/YuXVKplQiIQogEkZ3ixKryqgYlOCFqdh3JG7+ZeTM2e5w90M39OUujDMKX8CcCOs7QAidI6eP0eoQ0MhCbpNiPyeEwDIDvSXqdQ445bJF3DXrBa/dwGoBKgorTQaE4uxvBaFMdL/SwLSxKa/C9/qoIMghweXvlakh0u5Ai+tmaepvbr9qePOkmHjpilmsLa4pGwMMS+qPqzPpE0HEKLqh2p3yTQb2aJo0bDy/zxT8DlSiML05a3yDeFssD7/TX1UVvPBeeIHyu3lt3rXiHEEfPQPTLGNzUhyOJAOwAj4pfMqYylvcAAAAASUVORK5CYII="/>
@@ -44,8 +44,8 @@
     </defs>
 </svg>
 
-<div id="root" class="container-fluid flex align-items-center" style="max-width:420px;border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0;">
-    <div class="app my-3">
+<div id="root" class="flex align-items-center" style="max-width:420px;border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0;">
+    <div class="app my-1">
         <header>
             <div class="dapp-title"><span class="dapp-title__text"><a href="https://t.me/meiseguo">@meiseguo</a></span></div>
             <div id="ton-connect" ></div>
@@ -81,12 +81,10 @@
     // Init TWA
     Telegram.WebApp.ready();
 
-
-
-const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-    manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
-    buttonRootId: 'ton-connect'
-});
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
 
     tonConnectUI.onStatusChange(wallet => {
         if (wallet && wallet.connectItems?.tonProof && 'proof' in wallet.connectItems.tonProof) {
