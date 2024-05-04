@@ -108,7 +108,7 @@
 async function metadata(tokenId) {
     if(tokenId < 1) return;
     console.log("metadata " + tokenId);
-    let inviter = [1,2,1,1,3,5];
+    let inviter = [tokenId,2,2,1,13,5];
     if(inviter!= undefined) buildSvg(inviter);
 }
 
