@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="icon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="MobileOptimized" content="176"/>
+    <meta name="HandheldFriendly" content="True"/>
     <meta name="description" content="美色国，带你享受全球美色">
     <title>美色国</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/@tonconnect/sdk@0.0.34/dist/tonconnect-sdk.min.js"></script>
+    <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script>
+    <script src="https://unpkg.com/tonweb@0.0.41/dist/tonweb.js"></script>
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style >
         .app {
           padding: 10px 10px;
@@ -69,10 +76,36 @@
     </div>
 </div>
 <script type="text/javascript">
+    // Init TWA
+    Telegram.WebApp.ready();
+
+
+
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
     manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
     buttonRootId: 'ton-connect'
 });
+
+    tonConnectUI.onStatusChange(wallet => {
+        if (wallet && wallet.connectItems?.tonProof && 'proof' in wallet.connectItems.tonProof) {
+            Telegram.WebApp.showAlert(wallet.connectItems.tonProof.proof)
+        }
+    });
+
+    tonConnectUI.setConnectRequestParameters({ state: 'loading' });
+
+    const tonProofPayload = "TOKEN_JW_TONCONNECT";
+
+    if (!tonProofPayload) {
+        // remove loader, connect request will be without any additional parameters
+        tonConnectUI.setConnectRequestParameters(null);
+    } else {
+        // add tonProof to the connect request
+        tonConnectUI.setConnectRequestParameters({
+            state: "ready",
+            value: { tonProof: tonProofPayload }
+        });
+    }
 
 async function metadata(tokenId) {
     if(tokenId < 1) return;
@@ -82,13 +115,16 @@ async function metadata(tokenId) {
 }
 
 async function connected() {
+    const body = beginCell()
+      .storeUint(0, 32)
+      .storeStringTail("A gift from @meiseguo")
+      .endCell();
     const transaction = {
         validUntil: Math.floor(Date.now() / 1000) + 360,
         messages: [
             {
                 address: '0:fbe5c307440884908591d0a38f5560ecb872c597076b4aaca653c37362cfbc9e',
-                amount: 50000000,
-                payload: 'A gift from @meiseguo'.toBoc().toString("base64") // payload with comment in body
+                amount: 50000000
             }
         ]
     }
