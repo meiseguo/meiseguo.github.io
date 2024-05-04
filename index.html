@@ -74,18 +74,6 @@
         buttonRootId: 'ton-connect'
     });
 
-    async function connectToWallet() {
-        const connectedWallet = await tonConnectUI.connectWallet();
-        // Do something with connectedWallet if needed
-        console.log(connectedWallet);
-        metadata(1)
-    }
-
-    // Call the function
-    connectToWallet().catch(error => {
-        console.error("Error connecting to wallet:", error);
-    });
-
     async function metadata(tokenId) {
         if(tokenId < 1) return;
         console.log("metadata " + tokenId);
@@ -93,8 +81,7 @@
         if(inviter!= undefined) buildSvg(inviter);
     }
 
-    function connected() {
-      metadata(2)
+    async function connected() {
         const destinationAddress = Address.parse('UQD75cMHRAiEkIWR0KOPVWDsuHLFlwdrSqymU8NzYs-8nghM');
         const transaction = {
                 messages: [
@@ -103,9 +90,9 @@
                         amount: "10000000"
                     }
                 ]
-            }
+            };
 
-        const result = await tonConnectUI.sendTransaction(transaction)
+        const result = await tonConnectUI.sendTransaction(transaction);
     }
 
     function buildSvg(inviter) {
@@ -147,7 +134,7 @@
         let height = y + gapSoily
         svghtml = '<svg id="'+tokenId+'" data-name="美色国#'+tokenId+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="'+height+'" viewBox="0 0 24 '+height+'">' + svghtml + '</svg>'
         $('#topInviterCard').html(svghtml)
-        let cardhtml = '<p class="card-text"><button type="button" onclick="connected()" class="btn btn-success">美色国#'+tokenId+'</button><div>L'+level+', Invited '+invited+' & '+recursive+'</div></p>'
+        let cardhtml = '<p class="card-text"><button type="button" onclick="connected()" class="btn btn-success">meiseguo#'+tokenId+'</button><div>L'+level+', Invited '+invited+' & '+recursive+'</div></p>'
         $('#topInviterInfo').html(cardhtml)
     }
 
