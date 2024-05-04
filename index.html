@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GFT1494FPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GFT1494FPG');
-</script>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +13,7 @@
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <style >
         .app {
-          padding: 20px 40px;
+          padding: 10px 10px;
 
           > header {
             display: flex;
@@ -33,7 +24,7 @@
         }
     </style>
 </head>
-<body style="text-align: center;">
+<body style="text-align: center;box-sizing: border-box;">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
         <image id="leaf" width="13" height="15" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAA+0lEQVQokb1RS07DMBQcO3aaUNTykWCBWHAGllyFK/YuXVKplQiIQogEkZ3ixKryqgYlOCFqdh3JG7+ZeTM2e5w90M39OUujDMKX8CcCOs7QAidI6eP0eoQ0MhCbpNiPyeEwDIDvSXqdQ445bJF3DXrBa/dwGoBKgorTQaE4uxvBaFMdL/SwLSxKa/C9/qoIMghweXvlakh0u5Ai+tmaepvbr9qePOkmHjpilmsLa4pGwMMS+qPqzPpE0HEKLqh2p3yTQb2aJo0bDy/zxT8DlSiML05a3yDeFssD7/TX1UVvPBeeIHyu3lt3rXiHEEfPQPTLGNzUhyOJAOwAj4pfMqYylvcAAAAASUVORK5CYII="/>
@@ -82,6 +73,7 @@
         manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
         buttonRootId: 'ton-connect'
     });
+
     async function metadata(tokenId) {
         if(tokenId < 1) return;
         console.log("metadata " + tokenId);
