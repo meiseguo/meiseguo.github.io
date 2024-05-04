@@ -77,7 +77,8 @@
 <script type="text/javascript">
     // Init TWA
     Telegram.WebApp.ready();
-    $("#userid").val(Telegram.WebApp.initDataUnsafe.user.id);
+    const userId = window.Telegram.WebApp.initDataUnsafe.user?.id;
+    $("#userid").val(userId);
 
     const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
@@ -92,7 +93,7 @@
 
     tonConnectUI.setConnectRequestParameters({ state: 'loading' });
 
-    const tonProofPayload = Telegram.WebApp.initDataUnsafe.user.id;
+    const tonProofPayload = userId;
 
     if (!tonProofPayload) {
         // remove loader, connect request will be without any additional parameters
