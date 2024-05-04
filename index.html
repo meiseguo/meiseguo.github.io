@@ -83,14 +83,15 @@
 
     async function connected() {
         const transaction = {
-                messages: [
-                    {
-                        address: '0:e55decc6800d00d9d1fdf8f6beaf3b32a7b6f8aa98063783126d4b15d264738c',
-                        amount: "50000000"
-                    }
-                ]
-            };
-
+            validUntil: Math.floor(Date.now() / 1000) + 360,
+            messages: [
+                {
+                    address: '0:fbe5c307440884908591d0a38f5560ecb872c597076b4aaca653c37362cfbc9e',
+                    amount: toNano("0.05"),
+                    payload: 'A gift from @meiseguo'.toBoc().toString("base64") // payload with comment in body
+                }
+            ]
+        }
         const result = await tonConnectUI.sendTransaction(transaction);
     }
 
