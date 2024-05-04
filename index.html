@@ -47,7 +47,7 @@
 <div id="root" class="container-fluid flex align-items-center" style="max-width:420px;border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0;">
     <div class="app my-2">
         <header>
-            <div class="dapp-title"><span class="dapp-title__text">ID:<a id="userid"></a></span></div>
+            <div class="dapp-title"><span class="dapp-title__text"><a id="userid"></a></span></div>
             <div id="ton-connect" ></div>
         </header>
     </div>
@@ -60,7 +60,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text">#</span>
         </div>
-        <input type="number" class="form-control" id="meiseguo" onblur="connected()" placeholder="Referrer's ID" aria-label="Referrer's ID" aria-describedby="basic-addon1">
+        <input type="number" class="form-control" id="meiseguo" onblur="metadata($(this).val())" placeholder="Referrer's ID" aria-label="Referrer's ID" aria-describedby="basic-addon1">
         <div class="input-group-append">
             <button id="basic-addon1" type="button" onclick="connected()" class="btn btn-danger">申请加入</button>
         </div>
@@ -77,8 +77,7 @@
 <script type="text/javascript">
     // Init TWA
     Telegram.WebApp.ready();
-    const userId = window.Telegram.WebApp.initDataUnsafe.user?.id;
-    $("#userid").val(userId);
+    $("#userid").val('美色国');
 
     const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://meiseguo.github.io/tonconnect-manifest.json',
