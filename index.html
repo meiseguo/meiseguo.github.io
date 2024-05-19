@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="icon.png">
@@ -47,7 +47,11 @@
 <div id="root" class="container-fluid flex align-items-center" style="max-width:420px;border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0;">
     <div class="app my-2">
         <header>
-            <div class="dapp-title"><span class="dapp-title__text"><a id="userid"></a></span></div>
+            <div class="dapp-title">
+                <span class="dapp-title__text">
+                    <a class="alert-link" target="_blank" href="https://app.ston.fi/swap?chartVisible=false&ft=TON&fa=0.27&tt=EQDlXezGgA0A2dH9-Pa-rzsyp7b4qpgGN4MSbUsV0mRzjE7y">兑换美色国的钱 $MM</a>
+                </span>
+            </div>
             <div id="ton-connect" ></div>
         </header>
     </div>
@@ -64,9 +68,6 @@
         <div class="input-group-append">
             <button id="basic-addon1" type="button" onclick="connected()" class="btn btn-danger">申请加入</button>
         </div>
-    </div>
-    <div style="text-align: left;">
-      <a class="alert-link" href="https://app.ston.fi/swap?chartVisible=false&ft=TON&fa=0.27&tt=EQDlXezGgA0A2dH9-Pa-rzsyp7b4qpgGN4MSbUsV0mRzjE7y">兑换美色国的钱 $MM</a>
     </div>
 </div>
 <script type="text/javascript">
